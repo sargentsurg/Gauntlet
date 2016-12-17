@@ -10,11 +10,23 @@ const config = {
     },
     module: {
         loaders: [
-            {test: /\.(ts|tsx)$/, loader: 'ts'}
+            {
+                test: /\.(ts|tsx)$/, 
+                loader: 'ts'
+            },
+            {
+                test: /\.css$/,
+                exclude: /node_modules/,
+                loader: 'css-loader'
+            },
+            {
+                test: /\.scss$/,
+                loaders: ["style-loader", "css-loader", "sass-loader"]
+            }
         ]
     },
     resolve: {
-         extensions: ["", ".js", ".ts"]
+         extensions: ["", ".js", ".ts", ".css", ".scss"]
     },
     plugins: [
         new HtmlWebpackPlugin({
